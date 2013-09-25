@@ -2,14 +2,29 @@
   height: 60px;
   width: 90%;
   border: 1px blue solid;
+  background-color: blue;
   clear: both;
-  margin: auto;
+  margin: 1px auto 1px auto;
+}
+
+.selected {
+  border: 1px white solid;
 }
 
 .tower {
+  padding-top: 10px;
   margin: 0px 5px 0px 5px;
   float: left;
   width: 250px;
   height: 200px;
   background-color: gray;
+}
+
+#status {
+  font-size: 2em;
+  clear: both;
+}
+
+.button {
+  clear: both;
 }
