@@ -1,0 +1,14 @@
+.disk {
+  height: 60px;
+  width: 200px;
+  border: 1px blue solid;
+  clear: both;
+}
+
+.tower {
+  margin: 0px 5px 0px 5px;
+  float: left;
+  width: 250px;
+  height: 200px;
+  background-color: gray;
+}
