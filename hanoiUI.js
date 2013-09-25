@@ -11,7 +11,8 @@ var render = function() {
   clearBoard();
   game.towers.forEach(function(tower, tower_index) {
     // each tower
-    reversed_tower = tower.reverse();
+    reversed_tower = tower.slice();
+    reversed_tower.reverse();
     reversed_tower.forEach(function(disk) {
       // each disk in tower
       newDisk = $('<div class="disk"></div>');
@@ -28,8 +29,6 @@ $(document).ready( function() {
     if (startTowerIndex !== null) {
       // if we've already picked up a disc
       var endTowerIndex = parseInt($(this).attr('id'));
-      console.log(endTowerIndex);
-      console.log("This is the end tower: " + endTowerIndex);
       if (game.move(startTowerIndex,endTowerIndex)) {
         render();
       } else {
@@ -40,8 +39,6 @@ $(document).ready( function() {
     } else {
       // if we haven't picked up a disc
       startTowerIndex = parseInt($(this).attr('id'));
-      console.log(startTowerIndex);
-      console.log("This is the start tower: " + startTowerIndex);
     }
   });
 });

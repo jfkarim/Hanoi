@@ -22,9 +22,7 @@
 
   Game.prototype.isValidMove = function (startTowerIdx, endTowerIdx) {
     var startTower = this.towers[startTowerIdx];
-    console.log(typeof startTowerIdx);
     var endTower = this.towers[endTowerIdx];
-    console.log(typeof endTowerIdx);
 
     if (startTower.length === 0) {
       return false;
