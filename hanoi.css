@@ -1,8 +1,9 @@
 .disk {
   height: 60px;
-  width: 200px;
+  width: 90%;
   border: 1px blue solid;
   clear: both;
+  margin: auto;
 }
 
 .tower {
