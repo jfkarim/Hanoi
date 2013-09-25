@@ -1,8 +1,10 @@
 var game = new Hanoi.Game();
 game.run();
 
-var clearBoard = function() {
+var startTowerIndex = null;
 
+var clearBoard = function() {
+  $('.disk').remove();
 }
 
 var render = function() {
@@ -14,7 +16,7 @@ var render = function() {
       // each disk in tower
       newDisk = $('<div class="disk"></div>');
       newDisk.css('width', '' + disk*60 + 'px');
-      $('#tower'+tower_index).append(newDisk);
+      $('#'+tower_index).append(newDisk);
     });
   });
 }
@@ -22,5 +24,24 @@ var render = function() {
 
 $(document).ready( function() {
   render();
-  // $("div.tower").click()
-})
+  $("div.tower").click(function() {
+    if (startTowerIndex !== null) {
+      // if we've already picked up a disc
+      var endTowerIndex = parseInt($(this).attr('id'));
+      console.log(endTowerIndex);
+      console.log("This is the end tower: " + endTowerIndex);
+      if (game.move(startTowerIndex,endTowerIndex)) {
+        render();
+      } else {
+        console.log("Invalid Move")
+      }
+
+      startTowerIndex = null;
+    } else {
+      // if we haven't picked up a disc
+      startTowerIndex = parseInt($(this).attr('id'));
+      console.log(startTowerIndex);
+      console.log("This is the start tower: " + startTowerIndex);
+    }
+  });
+});
