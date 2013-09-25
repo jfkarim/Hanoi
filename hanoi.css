@@ -27,4 +27,7 @@
 
 .button {
   clear: both;
+  text-align: center;
+  background-color: gray;
+  width: 100px;
 }

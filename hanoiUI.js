@@ -1,5 +1,5 @@
 $(document).ready( function() {
-  var $counter = $('#status');
+  var $status = $('#status');
   var game = new Hanoi.Game();
   var startTowerIndex = null;
   var turns = 0;
@@ -12,9 +12,9 @@ $(document).ready( function() {
   var render = function() {
     clearBoard();
     if (turns === 1) {
-      $counter.html(''+ turns + " Move");
+      $status.html(''+ turns + " Move");
     } else {
-      $counter.html(''+ turns + " Moves");
+      $status.html(''+ turns + " Moves");
     }
     game.towers.forEach(function(tower, tower_index) {
       // each tower
@@ -37,6 +37,10 @@ $(document).ready( function() {
       if (game.move(startTowerIndex,endTowerIndex)) {
         turns++;
         render();
+        if (game.isWon()) {
+          $status.html("Won in " + turns + " moves.");
+          $("div.tower").unbind('click');
+        }
       } else {
         console.log("Invalid Move")
         $('.selected').removeClass('selected');
@@ -48,4 +52,11 @@ $(document).ready( function() {
       $(this).children('.disk').first().addClass('selected');
     }
   });
+
+  $("div.button").click(function() {
+    game = new Hanoi.Game();
+    turns = 0;
+    render();
+  });
+
 });
